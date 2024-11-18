@@ -1,6 +1,12 @@
 [TOC]
 
 # Directories
+## Root
+The root directory is the base of the project. Many important files relating to project configuration are located here. The ```.ioc``` file is used to generate configuration code in STM32CubeMX, the ```.launch``` files configure debugging parameters, and the ```.project``` file defines the project configuration in STM32CubeIDE. 
+
+> [!WARNING]
+> Many of the configuration files are particular about directory and files names. You will most likely need to rename the .ioc file, and create a new launch configuration when cloning the repository from Github.
+
 ## Core/Src
 The Src (or source) directory contains most of the operational code of the CanFest implementation.
 Specific details of each of the files can be found under Topics->CANFestival.
@@ -370,3 +376,6 @@ An example of implemented application code is locally present in @ref acceltemp.
 ‎```STM_RM.ioc``` is the STM32CubeMX configuration file that enables creation of initialization code for pin function and system clocks through a GUI.
 
 As long as the existing set up peripherals and pin assignments are not modified, the ioc file can be used to add additional peripherals and GPIO to the project.
+
+> [!NOTE]
+> STM_RM.ioc must be renamed to match the name of the folder that contains it. 

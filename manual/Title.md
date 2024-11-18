@@ -9,7 +9,7 @@ The COSMIIC concept is based on an existing platform implantable system, the [Ne
 **Discover more about our technology and licensing to come on our documentation site:** **[docs.cosmiic.org](https://docs.cosmiic.org)**
 
 # Introduction
-This website contains documentation relating to the [NNP Generic Remote Module](https://github.com) code repository. The generic module implements a minumum set of features that enables interoperability within the NNP network.
+This website contains documentation relating to the [NNP Generic Remote Module](https://github.com/COSMIIC-Inc/Implantables-GenericModule-Application) code repository. The generic module implements a minumum set of features that enables interoperability within the NNP network.
 
 Contributors can add additional functionality to their devices to create new modules for use within the network. Check out the [How To Use](How To Use.md) page for information on adding and configuring module functionality.
 
