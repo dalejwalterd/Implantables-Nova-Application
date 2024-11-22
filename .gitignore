@@ -32,4 +32,7 @@
 *.app
 
 # Directories
+/Release
 /Debug
+.vscode
+manual/docs
