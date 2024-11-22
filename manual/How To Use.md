@@ -379,3 +379,9 @@ As long as the existing set up peripherals and pin assignments are not modified,
 
 > [!NOTE]
 > STM_RM.ioc must be renamed to match the name of the folder that contains it. 
+
+# Adding Documentation
+The repository is set up with the Doxygen toolchain in mind. The repository also contains custom GitHub Actions and Workflows that will automatically publish Doxygen documentation to GitHub Pages on each commit to the main branch. The Doxygen configuration also adds a revision history feature, which allows users to view a snapshot of the documentation as it was when a release was published on GitHub.
+- The website will pull the tag name as the identifier for the release.
+
+The working directory of Doxygen is the root of the repository, not the /manual folder.
