@@ -99,6 +99,7 @@ UNS8 canSend(CAN_HandleTypeDef *hcan, Message *m)
 	  	  return 0;
 	  }
 
+	  CAN_Transmit_Messages++;
 	  return 1;
   }
 
@@ -123,6 +124,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	memcpy(&rxm.data, RxData, RxHeader.DLC);
 
 	canDispatch(&ObjDict_Data, &rxm);
+	UpdateCANerrors();
 }
 
 void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
@@ -139,26 +141,29 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
 	}
 	if(hcan->ErrorCode & HAL_CAN_ERROR_STF)
 	{
-
+		StuffErrors++;
 	}
 	if(hcan->ErrorCode & HAL_CAN_ERROR_FOR)
 	{
-
+		FormErrors++;
 	}
 	if(hcan->ErrorCode & HAL_CAN_ERROR_ACK)
 	{
 
 	}
 	if((hcan->ErrorCode & HAL_CAN_ERROR_BR) ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_BD) ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_TIMEOUT) ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_EWG)  ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_EPV)  ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_TIMEOUT) ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_NOT_INITIALIZED) ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_NOT_READY)  ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_NOT_STARTED)  ||
-		(hcan->ErrorCode & HAL_CAN_ERROR_PARAM))
+	   (hcan->ErrorCode & HAL_CAN_ERROR_BD))
+	{
+		BitErrors++;
+	}
+	if((hcan->ErrorCode & HAL_CAN_ERROR_TIMEOUT) ||
+	   (hcan->ErrorCode & HAL_CAN_ERROR_EWG)  ||
+	   (hcan->ErrorCode & HAL_CAN_ERROR_EPV)  ||
+	   (hcan->ErrorCode & HAL_CAN_ERROR_TIMEOUT) ||
+	   (hcan->ErrorCode & HAL_CAN_ERROR_NOT_INITIALIZED) ||
+	   (hcan->ErrorCode & HAL_CAN_ERROR_NOT_READY)  ||
+	   (hcan->ErrorCode & HAL_CAN_ERROR_NOT_STARTED)  ||
+	   (hcan->ErrorCode & HAL_CAN_ERROR_PARAM))
 	{
 		OtherErrors++;
 	}
@@ -181,6 +186,9 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
 	if(hcan->ErrorCode & HAL_CAN_ERROR_STF){
 		StuffErrors++;
 	}
+
+	CAN_TotalErrors++;
+
 	hcan->ErrorCode = 0;
 }
 
