@@ -1,9 +1,12 @@
 /**
  * @file can_stm.c
  *
- *  Created on: Oct 9, 2024
- *      Author: jenej
+ *  @date Created on: Oct 9, 2024
+ *  @author Jerry Ukwela (jeu6@case.edu)
+ *  @ingroup CANFestival
+ * 	@ingroup FESCAN
  */
+
 
 #include "main.h"
 #include "can_stm.h"

@@ -28,8 +28,6 @@ static UNS8 intsqrt( UNS16 x);
 static UNS8 modeIMU = IMU_ACC_ENABLED;
 static UNS8 configureISPU = 1; //0=don't configure, 1=configure data and program, 2=configure data
 
-//float Gx, Gy, Gz, Ax, Ay, Az; // Values for accelerometer and gyro
-
 //============================
 //    GLOBAL CODE
 //============================
@@ -310,18 +308,11 @@ void updateAccelerometer( void )
 
 void configISPU( UNS8 memsel, UNS16 addr, const UNS8* data, UNS16 len)
 {
-	UNS8 d;
-
-	//TODO: confirm ISPU access, and combine writes below into single write
 	putAccelRegSingle( ISPU_MEM_SEL, memsel ); //select data (0) or program mem (1)
 	putAccelRegSingle( ISPU_MEM_ADDR1, (UNS8) (addr >> 8)); //high byte
 	putAccelRegSingle( ISPU_MEM_ADDR0, (UNS8) (addr & 0xFF) ); //low byte
 
-	while(len--)
-	{
-		d = *data++;
-		putAccelRegSingle( ISPU_MEM_DATA, d );
-	}
+	HAL_I2C_Mem_Write(&hi2c2, ACC_ADDR, ISPU_MEM_DATA, 1, data, len, 100);
 }
 
 void confirmISPU( UNS8 memsel, UNS16 addr, const UNS8* data, UNS16 len)
@@ -440,7 +431,6 @@ void sleepTemperature( void )
 {
 	UNS8 sendData = 1;
 	HAL_I2C_Mem_Write(&hi2c2, TEMP_ADDR, T_CONF_REG, 1, &sendData, 1, 50);
-	//TODO: Implement
 }
 
 /**

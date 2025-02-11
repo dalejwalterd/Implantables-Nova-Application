@@ -1,8 +1,8 @@
 /**
  * @file nmtSlave.h
  *
- *  Created on: Oct 9, 2024
- *      Author: jenej
+ *  @date Created on: Oct 9, 2024
+ *  @author Jerry Ukwela (jeu6@case.edu)
  */
 
 #ifndef INC_NMTSLAVE_H_

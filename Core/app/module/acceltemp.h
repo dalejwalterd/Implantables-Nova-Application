@@ -1,8 +1,9 @@
-/*
- * acceltemp.h
+/**
+ * @file acceltemp.c
  *
- *  Created on: Oct 14, 2024
- *      Author: jenej
+ * @date Created on: Oct 14, 2024
+ * @author Jerry Ukwela (jeu6@case.edu)
+ *
  */
 
 #ifndef APP_MODULE_ACCELTEMP_H_

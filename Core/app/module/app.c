@@ -177,7 +177,6 @@ void EnterWaitingFunc(CO_Data* d, Message *m)
   setState(d,Waiting);
   StopWatchDog( d );
   InitAppTaskValues();
-  //No VOS required
 }
 
 /**
@@ -191,7 +190,6 @@ void EnterPatientOperationFunc(CO_Data* d, Message *m)
   if (d->nodeState == Waiting && (*m).data[1] == 0) //must be NMT broadcast and in waiting
   {
     setState(d, Mode_Patient_Control);
-//    configVOS(3); //ramp up to MinVOS
   }
 }
 
@@ -207,7 +205,6 @@ void EnterXManualFunc(CO_Data* d, Message *m)
   {
     setState(d, Mode_X_Manual);
     StartWatchDog(d, 10000);
-//    configVOS(3); //ramp up to MinVOS
   }
 }
 
@@ -223,7 +220,6 @@ void EnterYManualFunc(CO_Data* d, Message *m)
   {
     setState(d, Mode_Y_Manual);
     StartWatchDog(d, 10000);
-//    configVOS(3); //ramp up to MinVOS
   }
 }
 
@@ -238,7 +234,6 @@ void EnterStopStimFunc(CO_Data* d, Message *m)
   //no restrictions on state entry
   setState(d, Stopped);
   InitAppTaskValues();
-  //No VOS required
 }
 
 /**
@@ -253,7 +248,6 @@ void EnterPatientManualFunc(CO_Data* d, Message *m)
   {
     setState(d, Mode_Patient_Manual);
     StartWatchDog(d, 10000);
-//     configVOS(3); //ramp up to MinVOS
   }
 }
 
@@ -268,7 +262,6 @@ void EnterProduceXManualFunc(CO_Data* d, Message *m)
   if (d->nodeState == Waiting && (*m).data[1] == 0) //must be NMT broadcast and in waiting
   {
      setState(d, Mode_Produce_X_Manual);
-//     configVOS(3); //ramp up to MinVOS
   }
 }
 
@@ -283,6 +276,5 @@ void EnterRecordXFunc(CO_Data* d, Message *m)
   if (d->nodeState == Waiting)  //must be in waiting
   {
     setState(d, Mode_Record_X);
-//    configVOS(3); //ramp up to MinVOS
   }
 }

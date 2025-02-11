@@ -1,8 +1,9 @@
-/*
- * appTask.h
+/**
+ * @file app.h
  *
- *  Created on: Oct 14, 2024
- *      Author: jenej
+ *  Created on: @date Oct 14, 2024
+ *      @author Jerry Ukwela (jeu6@case.edu)
+ *      @brief 	Header file for app.c
  */
 
 #ifndef APP_MODULE_APPTASK_H_

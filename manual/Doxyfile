@@ -1074,7 +1074,8 @@ RECURSIVE              = YES
 EXCLUDE                = Debug \
                          Drivers \
                          manual/css \
-                         doxygen-1.12.0
+                         doxygen-1.12.0 \
+                         Release
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -1439,7 +1440,7 @@ HTML_EXTRA_STYLESHEET  = manual/css/doxygen-awesome-css/doxygen-awesome.css \
 
 HTML_EXTRA_FILES       = manual/css/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
                          manual/css/doxygen-awesome-css/doxygen-awesome-interactive-toc.js
-                         
+
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.
 # Possible values are: LIGHT always generates light mode output, DARK always
