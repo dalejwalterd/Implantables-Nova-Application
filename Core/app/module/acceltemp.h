@@ -1,5 +1,5 @@
 /**
- * @file acceltemp.c
+ * @file acceltemp.h
  *
  * @date Created on: Oct 14, 2024
  * @author Jerry Ukwela (jeu6@case.edu)
