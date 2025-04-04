@@ -77,8 +77,6 @@ TIMEVAL getElapsedTime(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM2) {
-		HAL_IncTick();
-
 		last_time_set = 0;
 		elapsed_time = 0;
 		TIM2->SR = (uint16_t)~TIM_SR_UIF;  //Clear pending interrupt

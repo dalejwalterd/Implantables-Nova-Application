@@ -146,7 +146,7 @@ void switchCommunicationState(CO_Data* d, s_state_communication *newCommunicatio
 /**
  * @ingroup statemachine
  * @brief Change the state of the node
- * @note All states now use the same Communication state structure
+ * @note All states other than Waiting and Stopped use the same Communication state structure
     - INTEGER8 csBoot_Up     0
 	- INTEGER8 csSDO         1
 	- INTEGER8 csEmergency   1
@@ -188,7 +188,7 @@ UNS8 setState(CO_Data* d, e_nodeState newState)
 
 			case Waiting:
 			{
-				s_state_communication newCommunicationState = {0, 1, 1, 1, 1, 1, 0};
+				s_state_communication newCommunicationState = {0, 1, 1, 0, 1, 0, 0};
 				d->nodeState = Waiting;
 				switchCommunicationState(d, &newCommunicationState);
 				(*d->waiting)(d);
@@ -197,7 +197,7 @@ UNS8 setState(CO_Data* d, e_nodeState newState)
 
 			case Stopped:
 			{
-				s_state_communication newCommunicationState = {0, 1, 1, 1, 1, 1, 0};
+				s_state_communication newCommunicationState = {0, 1, 1, 0, 1, 0, 0};
 				d->nodeState = Stopped;
 				switchCommunicationState(d, &newCommunicationState);
 				(*d->stopped)(d);
