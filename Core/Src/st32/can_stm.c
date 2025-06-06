@@ -7,7 +7,6 @@
  * 	@ingroup FESCAN
  */
 
-
 #include "main.h"
 #include "can_stm.h"
 #include "canfestival.h"
@@ -33,18 +32,18 @@ unsigned char canInit()
   UNS32 PDOData[4];
   UNS8 type = 0;
   UNS32 size = 0;
-  UNS32 * pdata = malloc(sizeof(UNS32));
+  UNS32 pdata = 0;
 
   for ( j = 0; j < 4; j++)
   {
     getODentry( &ObjDict_Data,
                    0x1400 + j,
                    1,
-                   pdata,
+                   &pdata,
                    &size,
                    &type,
                    0);
-    PDOData[j] = *pdata;
+    PDOData[j] = pdata;
   }
   UNS16 identifiers[] = { 0x0080, (UNS16)getNodeId(&ObjDict_Data), (UNS16)PDOData[0], (UNS16)PDOData[1], (UNS16)PDOData[2], (UNS16)PDOData[3], \
     0x0000, 0x0140, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000 };
@@ -57,8 +56,6 @@ unsigned char canInit()
     }
 
   }
-
-  free(pdata);
 
   return 1;
 }

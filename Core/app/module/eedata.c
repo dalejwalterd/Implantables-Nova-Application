@@ -16,7 +16,8 @@
 //    GLOBAL CODE
 //============================
 
-uint8_t* page = NULL;
+uint8_t page[FLASH_PAGE_SIZE * EEPROM_PAGE_SIZE];
+uint8_t memOpen = 0;
 
 /**
  * @ingroup EEPROM
@@ -245,10 +246,9 @@ void EraseEprom(UNS8 space)
  * @brief Copies the EEPROM into ram for modification by EEPROM_write()
  */
 UNS8 EEPROM_open(){
-	if(page == NULL){
-		page = malloc(512 * EEPROM_PAGE_SIZE * sizeof(uint32_t));
-
+	if(memOpen == 0){
 		memcpy(page, (void*) EEPROM_START_ADDRESS, (FLASH_PAGE_SIZE * EEPROM_PAGE_SIZE));	// Copy the EEPROM page into memory
+		memOpen = 1;
 		return 1;
 	}
 	return 0;
@@ -257,13 +257,13 @@ UNS8 EEPROM_open(){
 
 /**
  * @ingroup EEPROM
- * @brief Commits edits to EEPROM from ram to flash, frees ram space to be used by other program functions
+ * @brief Commits edits to EEPROM from ram to flash
  */
 UNS8 EEPROM_commit(){
 	FLASH_EraseInitTypeDef eraseInitStruct;
 	uint32_t PageError = 0;
 
-	if (page == NULL)
+	if (memOpen == 0)
 		return 0;
 
 	__disable_irq();
@@ -275,9 +275,9 @@ UNS8 EEPROM_commit(){
 	eraseInitStruct.NbPages 	= EEPROM_PAGE_SIZE;
 
 	if (HAL_FLASHEx_Erase(&eraseInitStruct, &PageError) != HAL_OK) {
-		HAL_FLASH_Lock(); // Re-lock the flash afterwards
-		free(page);
-		page = NULL;
+		HAL_FLASH_Lock(); // Re-lock the flash afterwards'
+		memset(page, 0, sizeof(page));
+		memOpen = 0;
 		__enable_irq();
 		return 0;
 	}
@@ -294,21 +294,19 @@ UNS8 EEPROM_commit(){
 	HAL_FLASH_Lock(); // Re-lock the flash afterwards
 	__enable_irq();
 
-	free(page);
-	page = NULL;
+	memOpen = 0;
 	return 1;
 }
 
 /**
  * @ingroup EEPROM
- * @brief Discards current edits to EEPROM without committing to flash, frees up ram and closes handle
+ * @brief Discards current edits to EEPROM without committing to flash
  */
 UNS8 EEPROM_discard(){
-	if (page == NULL)
+	if (memOpen == 0)
 		return 0;
 
-	free(page);
-	page = NULL;
+	memOpen = 0;
 
 	return 1;
 }
@@ -324,7 +322,7 @@ UNS8 EEPROM_discard(){
  */
 void EEPROM_write(UNS16 address, UNS8 * data, UNS16 length)
 {
-	if (page == NULL)
+	if (memOpen == 0)
 		return;
 
 	memcpy((page + address), data, length);		// Copy updated data into location in the memory copy

@@ -365,9 +365,9 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                     const subindex ObjDict_Index2011[] =
                      {
                        { RO, uint8, sizeof (UNS8), (void*)&ObjDict_highestSubIndex_obj2011 },
-                       { RW, uint8, 4, (void*)&Accelerometers[0] },
-                       { RW, uint8, 4, (void*) &AccelerometersFiltered[0] },
-                       { RW, int8, 4, (void*) &AccelerometersTilt[0] },
+                       { RO, uint8, 4, (void*)&Accelerometers[0] },
+                       { RO, uint8, 4, (void*) &AccelerometersFiltered[0] },
+                       { RO, int8, 4, (void*) &AccelerometersTilt[0] },
                        { RO, uint8, 16, (void*) &Quaternion[0] }
                      };
 

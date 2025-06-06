@@ -223,12 +223,12 @@ void updateAccelerometer( void )
        memmove( &yBuf[1], &yBuf[0], depth-1);
        memmove( &zBuf[1], &zBuf[0], depth-1);
 
-       //accelData is 0 to 256
+       //Accelerometers is 0 to 256
        //Add new value at beginning of buffer
        //ignore bottom two bits and convert to signed (-32 to 31 range)
-       xBuf[0]=(INTEGER8)(accelData[0]>>2) - 32;
-       yBuf[0]=(INTEGER8)(accelData[1]>>2) - 32;
-       zBuf[0]=(INTEGER8)(accelData[2]>>2) - 32;
+       xBuf[0]=(INTEGER8)(Accelerometers[0]>>2) - 32;
+       yBuf[0]=(INTEGER8)(Accelerometers[1]>>2) - 32;
+       zBuf[0]=(INTEGER8)(Accelerometers[2]>>2) - 32;
 
        if(cnt<depth) //if we haven't yet reached sampled depth
        {
