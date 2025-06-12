@@ -222,19 +222,23 @@ UNS8 ReadLocalFlashData( UNS32 nvAddress, UNS8 * data, UNS8 numData )
 
 /**
  * @ingroup EEPROM
- * @brief writes 0xFF to entire EEPROM (2KB).
+ * @brief writes 0xFF to entire EEPROM (6KB).
  * @param space: can be used to specify region of EEPROM (as long as aligned with EEPROM_ERASE_SIZE)
  */
-void EraseEprom(UNS8 space)
+void EEPROM_erase(UNS8 space)
 {
-  // Space variable can be unused, or used to define a region of the EEPROM if set up that way
+	// Space variable can be unused, or used to define a region of the EEPROM if set up that way
 
-  UNS8 byteErase[EEPROM_ERASE_SIZE];
-  memset(byteErase, 0xFF, EEPROM_ERASE_SIZE);
+	UNS8 byteErase[EEPROM_ERASE_SIZE];
+	memset(byteErase, 0xFF, EEPROM_ERASE_SIZE);
 
-  EEPROM_open();
-  EEPROM_write(0x00, byteErase, EEPROM_ERASE_SIZE);
-  EEPROM_commit();
+	EEPROM_open();
+
+	for (int i = 0; i < MAX_EEPROM_MEMORY; i += EEPROM_ERASE_SIZE){
+	  EEPROM_write(i, byteErase, EEPROM_ERASE_SIZE);
+	}
+
+	EEPROM_commit();
 }
 
 //============================

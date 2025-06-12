@@ -146,7 +146,7 @@ void processNMTstateChange(CO_Data* d, Message *m)
 
        case NMT_Erase_Serial_Eprom:
           if (d->nodeState == Waiting)
-            EraseEprom((*m).data[2]);  //param1 specifies all EEPROM(0), RestoreSpace(1) or PatternSpace(2)
+            EEPROM_erase((*m).data[2]);  //param1 specifies all EEPROM(0), RestoreSpace(1) or PatternSpace(2)
           break;
 
        case NMT_Do_Save_Cmd:

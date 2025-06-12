@@ -10,10 +10,10 @@
 
 // -------- DEFINITIONS ----------
 #define MAX_BYTES_PER_SUBINDEX  32    //TODO: Not sure what happens if subindex exceeds this
-#define MAX_EEPROM_MEMORY       0x800 ///< (2KB)
+#define MAX_EEPROM_MEMORY       0x1800 ///< (6KB)
 #define EEPROM_RECORD_SIZE      32
-#define EEPROM_ERASE_SIZE       0x800 ///< must be divisible into 2048 (2KB) by factor of 2, defines size of chunks erased from EEPROM
-#define EEPROM_PAGE_SIZE		1	  ///< XXX: must match the page size in bootloader config.h
+#define EEPROM_ERASE_SIZE       0x60 ///< must be divisible into 6144 (6KB) by factor of 2, defines size of chunks erased from EEPROM
+#define EEPROM_PAGE_SIZE		3	  ///< XXX: must match the page size in bootloader config.h
 #define EEPROM_START_ADDRESS	((127 - EEPROM_PAGE_SIZE) * FLASH_PAGE_SIZE)   ///< Loation of the start of the EEPROM in flash
 
 #define MAX_FLASH_MEMORY        FLASH_SIZE ///< (256KB)
@@ -29,7 +29,7 @@ void SaveValues( void );
 void RestoreValues( void );
 void ResetToODDefault(void);
 void ResetModule(void);
-void EraseEprom(UNS8);
+void EEPROM_erase(UNS8 space);
 UNS8 ReadLocalFlashData( UNS32 nvAddress, UNS8 * data, UNS8 numData );
 UNS8 EEPROM_open();
 UNS8 EEPROM_commit();

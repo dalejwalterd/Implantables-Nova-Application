@@ -518,27 +518,11 @@ void updateDiagnostics( void )
 	  HAL_ADC_Start_DMA(&hadc1, &ADCres, 4);	// Sample 4 enabled ADC channels and transfer results to ADCres through DMA
 	  HAL_ADC_PollForConversion(&hadc1, 1);	// Need time for DMA to transfer
 
-	  //set ch for next measurement
-	  switch(ch)
-	  {
-		case 0:
-			Diagnostic_VIC = ADCres[2]; // Channel 3
-			ch=1;
-			break;
-		case 1:
-			Diagnostic_VIN = ADCres[1]; // Channel 2
-			ch=3; //skip VOS, not currently configured
-			break;
-		case 2:
-			Diagnostic_VOS = ADCres[0]; // Channel 1
-			ch=3;
-			break;
-		case 3:
-			Diagnostic_VDD = ADCres[3]; // Channel 4
-			ch=0;
-			break;
-		default: ch=0;
-	  }
+	  Diagnostic_VOS = ADCres[0]; // Channel 1
+	  Diagnostic_VIN = ADCres[1]; // Channel 2
+	  Diagnostic_VIC = ADCres[2]; // Channel 3
+	  Diagnostic_VDD = ADCres[3]; // Channel 4
+
 	}
 }
 

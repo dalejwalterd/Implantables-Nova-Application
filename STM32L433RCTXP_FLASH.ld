@@ -47,7 +47,7 @@ MEMORY
 {
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 48K
   RAM2    (xrw)    : ORIGIN = 0x10000000,   LENGTH = 16K
-  FLASH    (rx)    : ORIGIN = 0x08005000,   LENGTH = 232K /* 256K - 20K (bootloader) - 2K (parameter space) - 2K (EEPROM)*/
+  FLASH    (rx)    : ORIGIN = 0x08005000,   LENGTH = 228K /* 256K - 20K (bootloader) - 2K (parameter space) - 6K (EEPROM)*/
 }
 
 /* Sections */
