@@ -21,8 +21,8 @@ The Inc (or include) directory contains the header files for files within the Co
 
 The main file in this directory that will be modified for user implementation is @ref def.h, which defines NMT commands the module is able to receive.
 
-## Core/app
-The app directory contains the user application files. This is where your custom implementation of the module will live.
+## Core/App
+The App (or application) directory contains the user application files. This is where your custom implementation of the module will live.
 
 ### module Folder
 There are a few files present in the directory that are required for operation of the generic module, but are not part of the core CanFest implentation, and thus, are included here.
@@ -372,13 +372,13 @@ State management callbacks are also available for user application modification.
 
 An example of implemented application code is locally present in @ref acceltemp.c, with a full application example in SWARM.
 
-## STM_RM.ioc
-‎```STM_RM.ioc``` is the STM32CubeMX configuration file that enables creation of initialization code for pin function and system clocks through a GUI.
+## Implantables-GenericModule-Application.ioc
+‎```Implantables-GenericModule-Application.ioc``` is the STM32CubeMX configuration file that enables creation of initialization code for pin function and system clocks through a GUI.
 
 As long as the existing set up peripherals and pin assignments are not modified, the ioc file can be used to add additional peripherals and GPIO to the project.
 
 > [!NOTE]
-> STM_RM.ioc must be renamed to match the name of the folder that contains it. 
+> Implantables-GenericModule-Application.ioc must be renamed to match the name of the folder that contains it. 
 
 # Adding Documentation
 The repository is set up with the Doxygen toolchain in mind. The repository also contains custom GitHub Actions and Workflows that will automatically publish Doxygen documentation to GitHub Pages on each commit to the main branch. The Doxygen configuration also adds a revision history feature, which allows users to view a snapshot of the documentation as it was when a release was published on GitHub.

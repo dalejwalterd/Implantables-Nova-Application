@@ -33,7 +33,6 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "data.h"
 #include "can.h"
-#include "data.h"
 
 /* USER CODE END Includes */
 
