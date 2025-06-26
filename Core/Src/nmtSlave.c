@@ -168,8 +168,11 @@ void processNMTstateChange(CO_Data* d, Message *m)
           //assume that only way to come out of sleep mode is power cycle
           if ( ((*m).data[1] == *d->bDeviceNodeId) && (d->nodeState == Waiting))
           {
-            if((*m).data[2]==1)
-            {
+              //Other power saving functions before sleeping
+    		  sleepApplication();
+              sleepAccelerometer();
+              sleepTemperature();
+
               // Trigger Full Shutdown (No brownout reset}
   			  __disable_irq();
   			  __disable_fault_irq();
@@ -186,16 +189,6 @@ void processNMTstateChange(CO_Data* d, Message *m)
   			  HAL_PWREx_EnableGPIOPullUp(PWR_GPIO_B, PWR_GPIO_BIT_8 | PWR_GPIO_BIT_9);
   			  HAL_PWREx_EnterSHUTDOWNMode();
   			  // If the module somehow goes from shutdown to run mode we're gonna have a bad time
-            }
-            else
-            {
-              //Other power saving functions before sleeping
-    		  sleepApplication();
-              sleepAccelerometer();
-              sleepTemperature();
-
-              HAL_PWREx_EnterSTOP2Mode(PWR_STOPENTRY_WFI);
-            }
           }
           break;
 
