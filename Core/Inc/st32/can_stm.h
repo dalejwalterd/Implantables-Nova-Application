@@ -12,22 +12,7 @@
 #include "can.h"
 
 #include "config.h"
-#include "can_drv.h"
 #include "ObjDict.h"
-
-// Number of receive MOb
-#define NB_RX_MOB                       2
-// Number of transmit MOb
-#define NB_TX_MOB                       (NB_MOB - NB_RX_MOB)
-
-//#if (NB_TX_MOB < 1)
-//#error define less RX Mobs, you must have at least 1 TX MOb!
-//#elif (NB_RX_MOB < 8)
-//#error define at least 8 RX MObs!
-//#endif
-
-#define START_TX_MOB                    NB_RX_MOB
-#define TX_INT_MSK			((0x7F << (7 - NB_TX_MOB)) & 0x7F)
 
 extern UNS8 txErr;
 extern UNS8 rxErr;

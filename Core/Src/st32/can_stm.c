@@ -28,7 +28,7 @@ UNS8 rxErr = 0;
 
 unsigned char canInit()
 {
-  unsigned char i,j;
+  unsigned char j;
   UNS32 PDOData[4];
   UNS8 type = 0;
   UNS32 size = 0;
@@ -48,14 +48,8 @@ unsigned char canInit()
   UNS16 identifiers[] = { 0x0080, (UNS16)getNodeId(&ObjDict_Data), (UNS16)PDOData[0], (UNS16)PDOData[1], (UNS16)PDOData[2], (UNS16)PDOData[3], \
     0x0000, 0x0140, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000 };
 
-  for (i = 0; i < NB_MOB; i++)
-  {
-    if (i < NB_RX_MOB)		// Is receive MOb
-    {
-      TxHeader.StdId = identifiers[i];
-    }
-
-  }
+  // identifiers[] can be used to assign the CAN filter, is unused here
+  TxHeader.StdId = identifiers[1];
 
   return 1;
 }
@@ -149,7 +143,7 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
 	}
 	if(hcan->ErrorCode & HAL_CAN_ERROR_ACK)
 	{
-
+		OtherErrors++;
 	}
 	if((hcan->ErrorCode & HAL_CAN_ERROR_BR) ||
 	   (hcan->ErrorCode & HAL_CAN_ERROR_BD))
@@ -169,11 +163,11 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
 	}
 	if(hcan->ErrorCode & HAL_CAN_ERROR_BOF)
 	{
-
+		OtherErrors++;
 	}
 	if(hcan->ErrorCode & HAL_CAN_ERROR_CRC)
 	{
-
+		OtherErrors++;
 	}
 	if((hcan->ErrorCode & HAL_CAN_ERROR_TX_TERR0) || (hcan->ErrorCode & HAL_CAN_ERROR_TX_TERR1) || (hcan->ErrorCode & HAL_CAN_ERROR_TX_TERR2))
 	{
