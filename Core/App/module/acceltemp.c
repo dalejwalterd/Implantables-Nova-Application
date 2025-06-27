@@ -502,7 +502,6 @@ void updateDiagnostics( void )
 {
 	static UNS8 taskDelayMSecs = 100;
 	static UNS32 tDelayRef = 0; //JML: set to 0, so timesout first time through
-	static UNS8 ch = 0;
 	uint8_t ADCres[4];
 
 	if(DiagnosticsEnabled)
