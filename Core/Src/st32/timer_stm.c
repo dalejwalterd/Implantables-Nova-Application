@@ -79,7 +79,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if (htim->Instance == TIM2) {
 		last_time_set = 0;
 		elapsed_time = 0;
-		TIM2->SR = (uint16_t)~TIM_SR_UIF;  //Clear pending interrupt
+		CLEAR_BIT(TIM2->SR, TIM_SR_UIF); //Clear pending interrupt
 		TimeDispatch();
 	}
 }
