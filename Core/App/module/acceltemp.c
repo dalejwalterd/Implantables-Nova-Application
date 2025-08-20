@@ -486,7 +486,7 @@ void updateTemperature( void )
 		degrC = MIN_TEMPR;
 	}
 
-	Temperature = (UNS8)degrC;
+	Temperature = (UNS16)degrC;
 }
 
 void initDiagnostics(void){
