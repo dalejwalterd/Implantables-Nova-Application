@@ -34,5 +34,7 @@
 # Directories
 /Release
 /Debug
+/build_evb
+/build_dev
 .vscode
 manual/docs
