@@ -17,6 +17,8 @@
 extern UNS8 txErr;
 extern UNS8 rxErr;
 
+typedef FDCAN_HandleTypeDef CAN_HandleTypeDef;
+
 /************************* To be called by user app ***************************/
 
 unsigned char canInit();

@@ -56,11 +56,6 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 CAN_FilterTypeDef   sFilterConfig;
-CAN_RxHeaderTypeDef RxHeader;
-CAN_TxHeaderTypeDef TxHeader;
-CAN_TxHeaderTypeDef TxHeaderSDO;
-CAN_TxHeaderTypeDef TxHeaderPDO;
-CAN_TxHeaderTypeDef TxHeaderScan;
 
 uint8_t RxData[8];
 uint8_t TxData[8];

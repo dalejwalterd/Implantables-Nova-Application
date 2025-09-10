@@ -73,9 +73,7 @@ void Error_Handler(void);
 
 extern uint8_t RxData[8];
 extern uint8_t TxData[8];
-extern CAN_TxHeaderTypeDef TxHeader;
 extern uint32_t TxMailbox;
-extern CAN_RxHeaderTypeDef RxHeader;
 
 extern ADC_HandleTypeDef hadc1;
 extern DMA_HandleTypeDef hdma_adc1;
