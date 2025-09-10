@@ -12,7 +12,7 @@
 
 #include <applicfg.h>
 #include "timer.h"
-#include "objdict.h"
+#include "ObjDict.h"
 #include "main.h"
 
 
