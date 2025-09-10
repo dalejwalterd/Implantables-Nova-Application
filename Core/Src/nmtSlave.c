@@ -11,7 +11,7 @@
 
 #include "canfestival.h"
 #include "sysdep.h"
-#include "objdict.h"
+#include "ObjDict.h"
 #include "eedata.h"
 #include "nmtSlave.h"
 #include "states.h"

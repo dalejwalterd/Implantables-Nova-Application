@@ -7,7 +7,7 @@
  */
 
 //#include "applicfg.h"
-#include "objdict.h"
+#include "ObjDict.h"
 #include "objdictdef.h"
 #include "eedata.h"
 #include <stdlib.h>

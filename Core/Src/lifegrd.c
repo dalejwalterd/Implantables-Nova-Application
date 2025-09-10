@@ -14,7 +14,7 @@
 #include "lifegrd.h"
 #include "canfestival.h"
 #include "sysdep.h"
-#include "objdict.h"
+#include "ObjDict.h"
 
 /*Internals prototypes*/
 void ConsumerHearbeatAlarm(CO_Data* d, UNS32 id);
