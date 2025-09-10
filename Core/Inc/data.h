@@ -18,7 +18,7 @@ extern "C" {
  */
 typedef struct struct_CO_Data CO_Data;
 
-#include "stm32l4xx.h"
+#include "stm32u5xx.h"
 #include "applicfg.h"
 #include "def.h"
 #include "can.h"
