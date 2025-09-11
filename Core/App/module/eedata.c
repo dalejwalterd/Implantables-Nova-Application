@@ -287,9 +287,9 @@ UNS8 EEPROM_commit(){
 	}
 
 	//Rewrite the page in flash
-	for (int i = 0; i < EEPROM_PAGE_SIZE * FLASH_PAGE_SIZE; i += 8) // Program into flash in double word increments (8 bytes)
+	for (int i = 0; i < EEPROM_PAGE_SIZE * FLASH_PAGE_SIZE; i += 16) // Program into flash in double word increments (8 bytes)
 	{
-	  if (HAL_FLASH_Program(TYPEPROGRAM_DOUBLEWORD, EEPROM_START_ADDRESS + i, *(uint64_t *)(page + i)) != HAL_OK)
+	  if (HAL_FLASH_Program(FLASH_TYPEPROGRAM_QUADWORD, EEPROM_START_ADDRESS + i, *(uint64_t *)(page + i)) != HAL_OK)
 	  {
 		  return 0;
 	  }
