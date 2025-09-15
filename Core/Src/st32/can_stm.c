@@ -26,6 +26,8 @@ volatile UNS16 receivedMessages = 0;
 UNS8 txErr = 0;
 UNS8 rxErr = 0;
 
+CAN_TxHeaderTypeDef TxHeader;
+
 unsigned char canInit()
 {
   unsigned char j;

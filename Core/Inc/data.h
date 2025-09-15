@@ -86,7 +86,8 @@ struct struct_CO_Data {
 
 	/* General */
 	UNS8 toggle;
-	CAN_HandleTypeDef *canHandle;
+	void *canHandle; 	// TODO DJW how to handle CAN changes
+	// CAN_HandleTypeDef *canHandle;
 	scanIndexOD_t scanIndexOD;
 	storeODSubIndex_t storeODSubIndex;
 
