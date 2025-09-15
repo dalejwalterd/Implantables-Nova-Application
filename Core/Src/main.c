@@ -25,7 +25,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "eedata.h"
-#include "acceltemp.h"
 #include "app.h"
 
 /* USER CODE END Includes */
@@ -162,7 +161,6 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-  initAccelerometer();
   initTemperature();
   initDiagnostics();
   initAppTask();

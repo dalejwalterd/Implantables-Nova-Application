@@ -16,7 +16,6 @@
 #include "nmtSlave.h"
 #include "states.h"
 #include "main.h"
-#include "acceltemp.h"
 
 #include "app.h"
 
@@ -181,7 +180,9 @@ void processNMTstateChange(CO_Data* d, Message *m)
   			  HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN3);
   			  HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN4);
   			  HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN5);
-  			  __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);			// Clear all wakeup flags
+          // Clear all wakeup flags
+          __HAL_PWR_CLEAR_FLAG(PWR_WAKEUP_FLAG1 | PWR_WAKEUP_FLAG2 | PWR_WAKEUP_FLAG3 | PWR_WAKEUP_FLAG4 | PWR_WAKEUP_FLAG5);
+
   			  HAL_PWREx_DisableInternalWakeUpLine();
 
   			  // Enable internal pullup to prevent shutdown from taking down network

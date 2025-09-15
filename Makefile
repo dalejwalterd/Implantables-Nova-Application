@@ -51,13 +51,11 @@ Core/Src/i2c.c \
 Core/Src/lifegrd.c \
 Core/Src/lss.c \
 Core/Src/main.c \
-Core/Src/memorymap.c \
 Core/Src/nmtMaster.c \
 Core/Src/nmtSlave.c \
 Core/Src/objacces.c \
 Core/Src/pdo.c \
 Core/Src/sdo.c \
-Core/Src/st32/can_stm.c \
 Core/Src/st32/timer_stm.c \
 Core/Src/states.c \
 Core/Src/stm32u5xx_hal_msp.c \
@@ -72,8 +70,6 @@ Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_adc.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_adc_ex.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.c \
-Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c \
-Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_fdcan.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.c \
@@ -93,6 +89,13 @@ Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.c
+
+# Core/Src/memorymap.c \
+
+# Core/Src/st32/can_stm.c \
+
+# Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c \
+# Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.c \
 
 
 # Core/App/module/acceltemp.c \
@@ -163,14 +166,14 @@ $(info Building for EVB hardware)
 	C_DEFS += \
 	-DUSE_NUCLEO_64 \
 	-DSTM32U575xx \
-	-DBLD_EVB
+	-DEVB_U575_BUILD
 endif
 
 ifeq ($(HDW_TYPE),dev)
 $(info Building for Dev hardware)
 	C_DEFS += \
 	-DSTM32U5A5xx \
-    -DBLD_DEV
+    -DDEV_U5A5_BUILD
 endif
 
 
