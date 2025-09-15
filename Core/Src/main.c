@@ -47,13 +47,6 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef hadc1;
-DMA_HandleTypeDef hdma_adc1;
-
-CAN_HandleTypeDef hcan1;
-
-I2C_HandleTypeDef hi2c2;
-
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
@@ -161,8 +154,6 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-  initTemperature();
-  initDiagnostics();
   initAppTask();
 
   /* USER CODE END 2 */
@@ -171,9 +162,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	updateAccelerometer();
-//	updateTemperature(); //TODO: Check w/physical temp module
-	updateDiagnostics();
 	updateAppTask();
 	Status_TestValue++;
 

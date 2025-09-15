@@ -75,12 +75,6 @@ extern uint8_t RxData[8];
 extern uint8_t TxData[8];
 extern uint32_t TxMailbox;
 
-extern ADC_HandleTypeDef hadc1;
-extern DMA_HandleTypeDef hdma_adc1;
-extern CAN_HandleTypeDef hcan1;
-extern I2C_HandleTypeDef hi2c2;
-extern TIM_HandleTypeDef htim2;
-
 extern uint8_t ADCres[4];
 
 /* USER CODE END Private defines */
