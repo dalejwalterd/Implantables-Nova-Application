@@ -15,7 +15,7 @@
 #define TIMER_HANDLE INTEGER16
 #define TASK_HANDLE  INTEGER16
 
-#include <can_stm.h>
+#include "can_stm_u5.h"
 
 /* --------- types and constants definitions --------- */
 #define TIMER_FREE 0        // timer is available for use

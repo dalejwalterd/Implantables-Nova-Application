@@ -35,7 +35,7 @@
 // Reals
 #define REAL32	float			///< Floating integer representation in CANFest
 #define REAL64  double			///< Floating double integer representation in CANFest
-//#include <can_stm.h>
+//#include <can_stm.h>  // TODO DJW Fix me
 
 // MSG functions
 // not finished, the strings have to be placed to the flash and printed out
@@ -64,8 +64,8 @@
 #    define MSG_WAR(num, str, val)
 #endif
 
-typedef void* CAN_HANDLE;
+typedef void* CAN_HANDLE;  // TODO DJW Fix me
 
-typedef void* CAN_PORT;
+typedef void* CAN_PORT;     // TODO DJW Fix me
 
 #endif /* INC_ST32_APPLICFG_H_ */

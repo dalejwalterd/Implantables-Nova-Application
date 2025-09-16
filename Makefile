@@ -56,7 +56,6 @@ Core/Src/nmtSlave.c \
 Core/Src/objacces.c \
 Core/Src/pdo.c \
 Core/Src/sdo.c \
-Core/Src/st32/timer_stm.c \
 Core/Src/states.c \
 Core/Src/stm32u5xx_hal_msp.c \
 Core/Src/stm32u5xx_hal_timebase_tim.c \
@@ -65,7 +64,9 @@ Core/Src/sync.c \
 Core/Src/syscalls.c \
 Core/Src/sysmem.c \
 Core/Src/system_stm32u5xx.c \
-Core/Src/system_stm32u5xx.c \
+Core/Src/timer.c \
+Core/Src/st32/can_stm_u5.c \
+Core/Src/st32/timer_stm.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_adc.c \
 Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_adc_ex.c \
@@ -92,7 +93,6 @@ Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.c
 
 # Core/Src/memorymap.c \
 
-# Core/Src/st32/can_stm.c \
 
 # Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c \
 # Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.c \

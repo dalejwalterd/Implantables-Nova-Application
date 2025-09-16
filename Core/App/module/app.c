@@ -18,7 +18,7 @@
 #include "app.h"
 #include "main.h"
 
-#include "can_stm.h"
+#include "can_stm_u5.h"
 
 //Application Specific
 volatile UNS8 f_syncPulse = 0;
